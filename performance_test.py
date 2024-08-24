@@ -3,7 +3,7 @@ import time
 import matplotlib.pyplot as plt
 import matplotlib
 
-# Отобразить текущий используемый бэкенд
+
 print(f"Используемый бэкенд: {matplotlib.get_backend()}")
 
 # Подключение к базе данных
@@ -16,10 +16,10 @@ conn = mysql.connector.connect(
 
 cursor = conn.cursor()
 
-# Словарь для хранения времени выполнения запросов
+
 query_times = {}
 
-# Пример простого запроса
+# простой запрос
 start_time = time.time()
 cursor.execute("SELECT COUNT(*) FROM Users")
 count_result = cursor.fetchone()
@@ -28,7 +28,7 @@ query_times['COUNT Query'] = end_time - start_time
 print(f"Время выполнения запроса COUNT: {query_times['COUNT Query']} секунд")
 print(f"Количество записей: {count_result[0]}")
 
-# Пример сложного запроса
+# сложный запрос 
 start_time = time.time()
 cursor.execute("SELECT * FROM Users WHERE Email LIKE '%a%'")
 like_result = cursor.fetchall()
@@ -37,7 +37,7 @@ query_times['LIKE Query'] = end_time - start_time
 print(f"Время выполнения запроса LIKE: {query_times['LIKE Query']} секунд")
 print(f"Найдено записей: {len(like_result)}")
 
-# Пример запроса с ограничением
+#  запрос с ограничением
 start_time = time.time()
 cursor.execute("SELECT * FROM Users LIMIT 10")
 limit_result = cursor.fetchall()
@@ -46,7 +46,7 @@ query_times['LIMIT Query'] = end_time - start_time
 print(f"Время выполнения запроса LIMIT: {query_times['LIMIT Query']} секунд")
 print(f"Найдено записей: {len(limit_result)}")
 
-# Пример запроса с сортировкой
+#  запрос с сортировкой
 start_time = time.time()
 cursor.execute("SELECT * FROM Users ORDER BY Email DESC LIMIT 10")
 order_result = cursor.fetchall()
@@ -55,7 +55,7 @@ query_times['ORDER BY Query'] = end_time - start_time
 print(f"Время выполнения запроса ORDER BY: {query_times['ORDER BY Query']} секунд")
 print(f"Найдено записей: {len(order_result)}")
 
-# Пример агрегатного запроса
+# агрегатный запрос
 start_time = time.time()
 cursor.execute("SELECT AVG(Age) FROM Users")  # Пример числового столбца
 avg_result = cursor.fetchone()
@@ -63,7 +63,7 @@ end_time = time.time()
 query_times['AVG Query'] = end_time - start_time
 print(f"Время выполнения запроса AVG: {query_times['AVG Query']} секунд")
 
-# Пример запроса с объединением
+# Пример запрос с объединением
 start_time = time.time()
 cursor.execute("""
 SELECT Users.FirstName, Orders.OrderID
@@ -90,5 +90,5 @@ plt.title('Сравнение времени выполнения запросо
 plt.xticks(rotation=45, ha='right')
 plt.tight_layout()
 
-# Принудительное отображение графика
+#  отображение графика
 plt.show(block=True)
