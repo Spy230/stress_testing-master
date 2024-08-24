@@ -4,7 +4,7 @@ import string
 
 # Функция для генерации случайных данных
 def generate_data(size):
-    return ''.join(random.choices(string.ascii_letters + string.digits, k=size))
+    return ''.join(random.choices(string.ascii_letters + string.digits, k=size)) 
 
 # Подключение к базе данных MySQL
 conn = mysql.connector.connect(
