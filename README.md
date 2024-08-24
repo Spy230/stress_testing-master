@@ -14,7 +14,7 @@
 
 1. **Клонируйте репозиторий:**
     ```bash
-    git clone https://github.com/yourusername/performance-testing.git
+    git clone  https://github.com/Spy230/stress_testing-master/tree/main
     ```
 
  
